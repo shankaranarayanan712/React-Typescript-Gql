@@ -1,0 +1,12 @@
+.navbar {
+  background-color: theme-color("primary");
+  color: black;
+  font-weight: bold;
+
+  .a {
+    color: theme-color("primary") !important;
+    &.active {
+      color: theme-color("primary");
+    }
+  }
+}
