@@ -1,43 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IssueType } from './interfaces';
-
-const UserWithAvatar = ({ user, orientation = 'vertical' }: { user: any; orientation: string }) => {
-  return (
-    <span className={`issue__user ${orientation}`}>
-      <img className="issue__user__avatar" src={user?.avatarUrl} alt="" />
-      <div className="issue__user__name">{user?.login}</div>
-    </span>
-  );
-};
-
-const shorten = (text = '', maxLength = 140) => {
-  // Normalize newlines
-  const cleanText = text.replace(/\\r\\n/g, '\n');
-
-  // Return if short enough already
-  if (cleanText.length <= maxLength) {
-    return cleanText;
-  }
-
-  const ellip = ' ...';
-
-  // Return the 140 chars as-is if they end in a non-word char
-  const oneTooLarge = cleanText.substr(0, 141);
-  if (/\W$/.test(oneTooLarge)) {
-    return oneTooLarge.substr(0, 140) + ellip;
-  }
-
-  // Walk backwards to the nearest non-word character
-  let i = oneTooLarge.length;
-  while (--i) {
-    if (/\W/.test(oneTooLarge[i])) {
-      return oneTooLarge.substr(0, i) + ellip;
-    }
-  }
-
-  return oneTooLarge.substr(0, 140) + ellip;
-};
+import { shorten } from '../_helpers/utils';
+import { UserWithAvatar } from './userAvatar';
 
 const Issue = ({ number, title, user, summary }: IssueType) => {
   return (
@@ -53,16 +18,21 @@ const Issue = ({ number, title, user, summary }: IssueType) => {
     </div>
   );
 };
-const IssueList = ({ issues }: { issues: any }) => {
-  return (
-    <ul className="issues">
-      {issues.map((issue: any) => (
-        <li key={issue.number} className="issues__issue-wrapper">
-          <Issue number={issue.number} user={issue.author} title={issue.title} summary={issue.body} />
-        </li>
-      ))}
-    </ul>
-  );
+
+const IssueList = ({ issues }: { issues: any }): React.ReactElement => {
+  if (issues && issues.length > 0) {
+    return (
+      <ul className="issues">
+        {issues.map((issue: any) => (
+          <li key={issue.number} className="issues__issue-wrapper">
+            <Issue number={issue.number} user={issue.author} title={issue.title} summary={issue.body} />
+          </li>
+        ))}
+      </ul>
+    );
+  } else {
+    return <div>Oops, Your search criteria donot have any results, Please try with another criteria </div>;
+  }
 };
 
 export default IssueList;

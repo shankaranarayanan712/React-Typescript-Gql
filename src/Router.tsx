@@ -1,6 +1,6 @@
 import React from 'react';
-import IssueListPage from './components/IssueListPage';
-import IssueDetailPage from './components/IssueDetailPage';
+import IssueListPage from './pages/issueList';
+import IssueDetailPage from './components/issueDetail';
 import { Switch, Route } from 'react-router-dom';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

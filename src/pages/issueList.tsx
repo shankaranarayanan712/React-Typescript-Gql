@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_ISSUES } from '../store/search/types';
 import { SEARCH_ISSUES } from '../queries';
-import IssueList from './IssueList';
+import IssueList from '../components/issueList';
 
 const org = 'Facebook';
 const repo = 'React';
@@ -34,7 +34,7 @@ const Header = ({ openIssuesCount }: { openIssuesCount: number }) => {
     );
   }
 };
-const IssueListPage = () => {
+const IssueListPage = (): React.ReactElement => {
   const [inputValue, setInputValue] = useState<string>('is:open ');
   const [searchQuery, setSearchQuery] = useState<string>(inputValue);
   const setData = useRef(true);
@@ -46,10 +46,10 @@ const IssueListPage = () => {
     },
   });
 
-  if (data?.search?.issueCount > 0) {
+  if (data?.search) {
     if (setData.current) {
       setData.current = false;
-      dispatch({ type: SET_ISSUES, payload: data.search });
+      dispatch({ type: SET_ISSUES, payload: data?.search?.issueCount > 0 ? data.search : [] });
     }
   }
 
@@ -83,7 +83,7 @@ const IssueListPage = () => {
       </div>
       <div id="issue-list-page">
         <Header openIssuesCount={issueCount} />
-        {issues && issues.length > 0 && <IssueList issues={issues} />}
+        {issues && <IssueList issues={issues} />}
       </div>
     </div>
   );

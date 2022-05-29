@@ -11,7 +11,7 @@ export const searchReducer = (state = initialState, action: ActionsTypes) => {
     case SET_ISSUES:
       return {
         ...state,
-        issues: action.payload.nodes.filter((node: any) => node.title),
+        issues: action.payload?.nodes?.filter((node: any) => node.title) || [],
         issueCount: action.payload.issueCount,
         issueDetails: {},
       };
