@@ -6,11 +6,13 @@ import { useQuery } from '@apollo/client';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_ISSUE_DETAILS } from '../store/search/types';
 import { GET_ISSUE_DETAILS } from '../queries';
-
-const UserWithAvatar = ({ user, orientation = 'vertical' }: { user: any; orientation: string }) => {
+import { Author } from '../interfaces/issueList.interface';
+import { Node } from '../interfaces/issue.interface';
+import { RootState } from '../store';
+const UserWithAvatar = ({ user, orientation = 'vertical' }: { user: Author; orientation: string }) => {
   return (
     <span className={`issue__user ${orientation}`}>
-      <img className="issue__user__avatar" src={user.avatarUrl} alt="" />
+      <img className="issue__user__avatar" src={user.avatarURL} alt="" />
       <div className="issue__user__name">{user.login}</div>
     </span>
   );
@@ -48,7 +50,7 @@ const IssueComment = ({ comment }: any) => {
 const IssueComments = ({ comments = [] }) => {
   return (
     <ul className="issue-detail__comments">
-      {comments.map((comment: any) => (
+      {comments.map((comment: Node) => (
         <li key={comment?.id}>
           <IssueComment comment={comment} />
         </li>
@@ -71,7 +73,7 @@ const Content = ({ issue }: any) => {
         <ReactMarkdown children={issue.body} />
       </div>
       <hr className="divider--short" />
-      <Comments comments={issue?.edges?.comments?.filter((node: any) => !!node)} />
+      <Comments comments={issue?.edges?.comments?.filter((node: Node) => !!node)} />
     </div>
   );
 };
@@ -86,9 +88,9 @@ const Loading = ({ issueId }: { issueId: number }) => {
 
 const IssueDetailPage = (): React.ReactElement => {
   const setData = useRef(true);
-  const params: any = useParams();
+  const params = useParams() as any;
   const dispatch = useDispatch();
-  const { issueDetails } = useSelector((state: any) => state.data);
+  const { issueDetails } = useSelector((state: RootState) => state.data);
   const { data, error } = useQuery(GET_ISSUE_DETAILS, {
     variables: {
       issueNumber: Number(params.issueId),

@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SET_ISSUES } from '../store/search/types';
 import { SEARCH_ISSUES } from '../queries';
 import IssueList from '../components/issueList';
+import { BASE_QUERY, org, repo } from '../constants';
+import { RootState } from '../store';
 
-const org = 'Facebook';
-const repo = 'React';
 const OrgRepo = ({ org, repo }: { org: string; repo: string }) => {
   return (
     <span>
@@ -39,10 +39,10 @@ const IssueListPage = (): React.ReactElement => {
   const [searchQuery, setSearchQuery] = useState<string>(inputValue);
   const setData = useRef(true);
   const dispatch = useDispatch();
-  const { issues, issueCount } = useSelector((state: any) => state.data);
+  const { issues, issueCount } = useSelector((state: RootState) => state.data);
   const { data } = useQuery(SEARCH_ISSUES, {
     variables: {
-      searchQuery: 'repo:facebook/react ' + searchQuery,
+      searchQuery: BASE_QUERY + searchQuery,
     },
   });
 
@@ -69,7 +69,7 @@ const IssueListPage = (): React.ReactElement => {
 
   return (
     <div className="container">
-      <div className="row justify-content-center">
+      <div className="row ">
         <div className="col-lg-8 text-center">
           <input
             type="text"
