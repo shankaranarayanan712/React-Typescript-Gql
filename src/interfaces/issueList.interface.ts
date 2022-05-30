@@ -23,7 +23,7 @@ export interface Node {
 }
 
 export interface Author {
-  avatarURL: string;
+  avatarUrl: string;
   login: string;
   typename: AuthorTypename;
 }

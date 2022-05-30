@@ -10,7 +10,7 @@ export const UserWithAvatar = ({
 }): React.ReactElement => {
   return (
     <span className={`issue__user ${orientation}`}>
-      <img className="issue__user__avatar" src={user?.avatarURL} alt="" />
+      <img className="issue__user__avatar" src={user?.avatarUrl} alt="" />
       <div className="issue__user__name">{user?.login}</div>
     </span>
   );

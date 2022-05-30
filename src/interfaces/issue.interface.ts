@@ -10,7 +10,7 @@ export interface Issue {
 }
 
 export interface Author {
-  avatarURL: string;
+  avatarUrl: string;
   login: string;
   typename: string;
 }
