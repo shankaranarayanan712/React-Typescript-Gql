@@ -1,5 +1,5 @@
 import React from 'react';
-import IssueListPage from './containers/issueList';
+import IssueListPage from './containers/issueLists';
 import IssueDetailPage from './containers/issueDetail';
 import { Switch, Route } from 'react-router-dom';
 

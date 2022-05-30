@@ -9,6 +9,7 @@ export interface Issues {
   issueCount?: number;
   pageInfo?: PageInfo;
   typename?: string;
+  number?: number;
 }
 
 export interface Node {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IssueType } from '../interfaces/issueList.interface';
 import { shorten } from '../helpers/utils';
 import { UserWithAvatar } from './userAvatar';
 import { Issue as IIssue } from '../interfaces/issue.interface';
@@ -20,7 +19,7 @@ const Issue = ({ number, title, user, summary }: any) => {
   );
 };
 
-const IssueList = ({ issues }: { issues: [IIssue] }): React.ReactElement => {
+const IssueList = ({ issues }: { issues: any }): React.ReactElement => {
   if (issues && issues.length > 0) {
     return (
       <ul className="issues">

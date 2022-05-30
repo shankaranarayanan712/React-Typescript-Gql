@@ -1,7 +1,7 @@
 // Bootstrap here
 
 $theme-colors: (
-        "primary": #ffc107,
+                "primary": blue,
         "secondary": #515151,
         "danger": #ff4136
 );
@@ -17,11 +17,12 @@ $theme-colors: (
 // TODO : si il y a le temps => migrer dessus
 
 body {
-  margin: 0;
+  margin: 10;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to right, #ff5f6d, #ffc371);
 }
 

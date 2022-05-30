@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_ISSUES } from '../store/search/types';
 import { SEARCH_ISSUES } from '../queries';
-import IssueList from '../components/issueList';
+import IssueList from '../components/IssueList';
 import { BASE_QUERY } from '../constants';
 import { RootState } from '../store';
 import Header from '../components/head';
