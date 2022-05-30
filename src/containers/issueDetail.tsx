@@ -6,58 +6,16 @@ import { useQuery } from '@apollo/client';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_ISSUE_DETAILS } from '../store/search/types';
 import { GET_ISSUE_DETAILS } from '../queries';
-import { Author } from '../interfaces/issueList.interface';
-import { Node } from '../interfaces/issue.interface';
 import { RootState } from '../store';
-const UserWithAvatar = ({ user, orientation = 'vertical' }: { user: Author; orientation: string }) => {
-  return (
-    <span className={`issue__user ${orientation}`}>
-      <img className="issue__user__avatar" src={user.avatarUrl} alt="" />
-      <div className="issue__user__name">{user.login}</div>
-    </span>
-  );
-};
+import { UserWithAvatar } from '../components/userAvatar';
+import Loading from '../components/loading';
+import Comments from '../components/comments';
 
 const IssueState = ({ state }: { state: string }) => (
   <span className={`issue-detail__state issue-detail__state--${state.toLowerCase()}`}>{state}</span>
 );
 
 const IssueNumber = ({ number }: { number: number }) => <span className="issue-detail__number">#{number}</span>;
-
-const Comments = ({ comments = [] }: any) => {
-  // The issue has no comments
-  if (comments === 0) {
-    return <div className="issue-detail--no-comments">No comments</div>;
-  }
-
-  // Comments are loaded
-  return <IssueComments comments={comments} />;
-};
-
-const IssueComment = ({ comment }: any) => {
-  return (
-    <div className="issue-detail__comment">
-      <UserWithAvatar user={comment.author} orientation="horizontal" />
-
-      <div className="issue-detail__comment__body">
-        <ReactMarkdown children={comment.body} />
-      </div>
-    </div>
-  );
-};
-
-// eslint-disable-next-line react/prop-types
-const IssueComments = ({ comments = [] }) => {
-  return (
-    <ul className="issue-detail__comments">
-      {comments.map((comment: Node) => (
-        <li key={comment?.id}>
-          <IssueComment comment={comment} />
-        </li>
-      ))}
-    </ul>
-  );
-};
 
 const Content = ({ issue }: any) => {
   return (
@@ -74,14 +32,6 @@ const Content = ({ issue }: any) => {
       </div>
       <hr className="divider--short" />
       <Comments comments={issue?.edges?.comments?.filter((node: Node) => !!node)} />
-    </div>
-  );
-};
-
-const Loading = ({ issueId }: { issueId: number }) => {
-  return (
-    <div className="issue-detail--loading">
-      <p>Loading issue #{issueId}...</p>
     </div>
   );
 };

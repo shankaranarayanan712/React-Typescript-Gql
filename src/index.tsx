@@ -7,8 +7,8 @@ import { ApolloProvider } from '@apollo/client';
 import store from './store';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './components/header';
-import { client } from './_helpers/apollo';
-import './components/styles.css';
+import { client } from './helpers/apollo';
+import './styles/styles.css';
 
 ReactDOM.render(
   <React.StrictMode>

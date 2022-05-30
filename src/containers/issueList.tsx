@@ -4,36 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SET_ISSUES } from '../store/search/types';
 import { SEARCH_ISSUES } from '../queries';
 import IssueList from '../components/issueList';
-import { BASE_QUERY, org, repo } from '../constants';
+import { BASE_QUERY } from '../constants';
 import { RootState } from '../store';
+import Header from '../components/head';
 
-const OrgRepo = ({ org, repo }: { org: string; repo: string }) => {
-  return (
-    <span>
-      <span className="header__org">{org}</span>
-      {' / '}
-      <span className="header__repo">{repo}</span>
-    </span>
-  );
-};
-
-const Header = ({ openIssuesCount }: { openIssuesCount: number }) => {
-  if (openIssuesCount === -1) {
-    return (
-      <h5>
-        Issues for <OrgRepo org={org} repo={repo} />
-      </h5>
-    );
-  } else {
-    const pluralizedIssue = openIssuesCount === 1 ? 'Issue' : 'Issues';
-    return (
-      <h5>
-        <span className="header__openIssues">{openIssuesCount}</span> {pluralizedIssue} for{' '}
-        <OrgRepo org={org} repo={repo} />
-      </h5>
-    );
-  }
-};
 const IssueListPage = (): React.ReactElement => {
   const [inputValue, setInputValue] = useState<string>('is:open ');
   const [searchQuery, setSearchQuery] = useState<string>(inputValue);

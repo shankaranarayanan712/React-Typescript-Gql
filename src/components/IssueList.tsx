@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IssueType } from '../interfaces/issueList.interface';
-import { shorten } from '../_helpers/utils';
+import { shorten } from '../helpers/utils';
 import { UserWithAvatar } from './userAvatar';
 import { Issue as IIssue } from '../interfaces/issue.interface';
 

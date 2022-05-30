@@ -7,7 +7,7 @@ const initialState: State = {
   pageInfo: {},
 };
 
-export const searchReducer = (state = initialState, action: ActionsTypes) => {
+export const searchReducer = (state = initialState, action: ActionsTypes): State => {
   switch (action.type) {
     case SET_ISSUES:
       return {
