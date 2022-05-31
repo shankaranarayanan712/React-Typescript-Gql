@@ -1,7 +1,7 @@
 // Bootstrap here
 
 $theme-colors: (
-                "primary": blue,
+                "primary": #ffc107,
         "secondary": #515151,
         "danger": #ff4136
 );
@@ -23,6 +23,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to right, #ff5f6d, #ffc371);
+  //background-image: linear-gradient(to right, #bdc3c7, #6ba4af);
 }
 

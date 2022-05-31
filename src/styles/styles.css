@@ -274,3 +274,13 @@
   .issues__pagination .next {
     margin-left: 1rem;
   }
+.isa_error {
+  color: #D8000C;
+  padding-bottom: 20px;
+  text-decoration: double;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+}

@@ -20,7 +20,7 @@ const IssueComments = ({ comments = [] }): React.ReactElement => {
   return (
     <ul className="issue-detail__comments">
       {comments.map((comment: Node) => (
-        <li key={comment?.id}>
+        <li key={comment?.id} role="issueList">
           <IssueComment comment={comment} />
         </li>
       ))}
@@ -31,7 +31,11 @@ const IssueComments = ({ comments = [] }): React.ReactElement => {
 const Comments = ({ comments = [] }: any) => {
   // The issue has no comments
   if (comments === 0) {
-    return <div className="issue-detail--no-comments">No comments</div>;
+    return (
+      <div className="issue-detail--no-comments" role="issueList">
+        No comments
+      </div>
+    );
   }
 
   // Comments are loaded

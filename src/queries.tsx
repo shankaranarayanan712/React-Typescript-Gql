@@ -1,34 +1,34 @@
 import { gql } from '@apollo/client';
 
 export const SEARCH_ISSUES = gql`
-  query($searchQuery: String!, $after: String, $before: String) {
-    search(query: $searchQuery, type: ISSUE, first: 100, after: $after, before: $before) {
-      nodes {
-        ... on Issue {
-          title
-          createdAt
-          state
-          number
-          body
-          comments {
-            totalCount
-          }
-          author {
-            avatarUrl
-            login
-          }
-        }
-      }
-      issueCount
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-        endCursor
-        startCursor
-      }
-    }
-  }
-`;
+         query($searchQuery: String!, $after: String, $before: String) {
+           search(query: $searchQuery, type: ISSUE, first: 100, after: $after, before: $before) {
+             nodes {
+               ... on Issue {
+                 title
+                 createdAt
+                 state
+                 number
+                 body
+                 comments {
+                   totalCount
+                 }
+                 author {
+                   avatarUrl
+                   login
+                 }
+               }
+             }
+             issueCount
+             pageInfo {
+               hasNextPage
+               hasPreviousPage
+               endCursor
+               startCursor
+             }
+           }
+         }
+       `;
 
 export const GET_ISSUE_DETAILS = gql`
   query($issueNumber: Int!) {
