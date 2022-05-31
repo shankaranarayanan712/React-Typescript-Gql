@@ -90,11 +90,11 @@ const IssueListPage = (): React.ReactElement => {
         <Header openIssuesCount={issueCount} />
         {issues && <IssueList issues={issues} />}
       </div>
-      {pageInfo.hasNextPage && (
+      {pageInfo?.hasNextPage && (
         <div className="buttonContainer">
           <input
             type="button"
-            value="Next"
+            value="Next Page"
             onClick={() => onLoadMore('Next')}
             className="form-control p-2 my-2 button"
           />

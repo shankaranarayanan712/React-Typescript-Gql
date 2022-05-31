@@ -1,6 +1,7 @@
 import React from 'react';
 import IssueListPage from './containers/issueLists';
 import IssueDetailPage from './containers/issueDetail';
+import ErrorPage from './components/errorPage';
 import { Switch, Route } from 'react-router-dom';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -14,9 +15,7 @@ function Router() {
         <IssueDetailPage />
       </Route>
       <Route path="*">
-        <main style={{ padding: '1rem' }}>
-          <p>Oops , Nothing here</p>
-        </main>
+        <ErrorPage />
       </Route>
     </Switch>
   );
