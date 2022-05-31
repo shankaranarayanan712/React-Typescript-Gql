@@ -24,14 +24,14 @@ const IssueList = ({ issues }: { issues: any }): React.ReactElement => {
     return (
       <ul className="issues">
         {issues.map((issue: IIssue) => (
-          <li key={issue.number} className="issues__issue-wrapper">
+          <li key={issue.number} className="issues__issue-wrapper" role="issues">
             <Issue number={issue.number} user={issue.author} title={issue.title} summary={issue.body} />
           </li>
         ))}
       </ul>
     );
   } else {
-    return <div>Oops, Nothing to show, Please try with another criteria </div>;
+    return <div role="issues">Oops, Nothing to show, Please try with another criteria </div>;
   }
 };
 

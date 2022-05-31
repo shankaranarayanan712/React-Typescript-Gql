@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Header from '../components/head';
 
-describe('Header Component', () => {
-  test('renders header component', () => {
+describe('Header Component Tests', () => {
+  test('Renders header component', () => {
     render(<Header openIssuesCount={20} />);
     const divElement = screen.getByRole('contentInfo');
     expect(divElement).toBeInTheDocument();

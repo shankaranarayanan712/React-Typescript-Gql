@@ -37,7 +37,6 @@ const IssueListPage = (): React.ReactElement => {
       data = await fetchMore({ variables: { before: pageInfo.startCursor } });
     } else if (type === 'Next') {
       data = await fetchMore({ variables: { after: pageInfo.endCursor } });
-      console.log('data', data);
     }
     dispatch({ type: SET_ISSUES, payload: data?.data?.search.issueCount > 0 ? data?.data.search : {} });
   };
@@ -93,7 +92,12 @@ const IssueListPage = (): React.ReactElement => {
       </div>
       {pageInfo.hasNextPage && (
         <div className="buttonContainer">
-          <input type="button" value="Next" onClick={() => onLoadMore('Next')} className="form-control p-2 my-2 " />
+          <input
+            type="button"
+            value="Next"
+            onClick={() => onLoadMore('Next')}
+            className="form-control p-2 my-2 button"
+          />
         </div>
       )}
     </div>
