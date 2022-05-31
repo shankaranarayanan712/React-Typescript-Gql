@@ -10,7 +10,7 @@ import Header from '../components/head';
 
 const IssueListPage = (): React.ReactElement => {
   const [inputValue, setInputValue] = useState<string>('is:open ');
-  const [searchQuery, setSearchQuery] = useState<any>(inputValue);
+  const [searchQuery, setSearchQuery] = useState<string>(inputValue);
   const setData = useRef(true);
   const dispatch = useDispatch();
   const { issues, issueCount, pageInfo } = useSelector((state: RootState) => state.data);
