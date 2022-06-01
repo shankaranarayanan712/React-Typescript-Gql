@@ -17,11 +17,12 @@ const IssueComment = ({ comment }: any): React.ReactElement => {
 
 // eslint-disable-next-line react/prop-types
 const IssueComments = ({ comments = [] }): React.ReactElement => {
+  console.log('comments', comments);
   return (
     <ul className="issue-detail__comments">
       {comments.map((comment: Node) => (
-        <li key={comment?.id} role="issueList">
-          <IssueComment comment={comment} />
+        <li key={comment?.node?.id} role="issueList">
+          <IssueComment comment={comment.node} />
         </li>
       ))}
     </ul>
@@ -30,7 +31,7 @@ const IssueComments = ({ comments = [] }): React.ReactElement => {
 
 const Comments = ({ comments = [] }: any) => {
   // The issue has no comments
-  if (comments === 0) {
+  if (comments == 0) {
     return (
       <div className="issue-detail--no-comments" role="issueList">
         No comments

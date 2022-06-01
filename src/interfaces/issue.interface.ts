@@ -26,6 +26,7 @@ export interface Edge {
 }
 
 export interface Node {
+  node: any;
   author: Author;
   body: string;
   id: string;

@@ -31,7 +31,8 @@ const Content = ({ issue }: any) => {
         <ReactMarkdown children={issue.body} />
       </div>
       <hr className="divider--short" />
-      <Comments comments={issue?.edges?.comments?.filter((node: Node) => !!node)} />
+      <h4>Comments:</h4>
+      <Comments comments={issue?.comments?.edges?.filter((node: Node) => !!node)} />
     </div>
   );
 };
